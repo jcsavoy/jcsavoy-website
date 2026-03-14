@@ -1,704 +1,0 @@
-  @font-face {    font-family: 'Cormorant Garamond';    src: url('../fonts/cormorant-garamond-v21-latin-regular.woff2') format('woff2');    font-weight: 400;    font-style: normal;    font-display: swap;  }  @font-face {    font-family: 'Cormorant Garamond';    src: url('../fonts/cormorant-garamond-v21-latin-italic.woff2') format('woff2');    font-weight: 400;    font-style: italic;    font-display: swap;  }  @font-face {    font-family: 'Cormorant Garamond';    src: url('../fonts/cormorant-garamond-v21-latin-600.woff2') format('woff2');    font-weight: 600;    font-style: normal;    font-display: swap;  }  @font-face {    font-family: 'Lora';    src: url('../fonts/lora-v37-latin-regular.woff2') format('woff2');    font-weight: 400;    font-style: normal;    font-display: swap;  }  @font-face {    font-family: 'Lora';    src: url('../fonts/lora-v37-latin-italic.woff2') format('woff2');    font-weight: 400;    font-style: italic;    font-display: swap;  }  @font-face {    font-family: 'Lora';    src: url('../fonts/lora-v37-latin-500.woff2') format('woff2');    font-weight: 500;    font-style: normal;    font-display: swap;  }  @font-face {    font-family: 'Playfair Display';    src: url('../fonts/playfair-display-v40-latin-regular.woff2') format('woff2');    font-weight: 400;    font-style: normal;    font-display: swap;  }  @font-face {    font-family: 'Playfair Display';    src: url('../fonts/playfair-display-v40-latin-italic.woff2') format('woff2');    font-weight: 400;    font-style: italic;    font-display: swap;  }  @font-face {    font-family: 'Playfair Display';    src: url('../fonts/playfair-display-v40-latin-600.woff2') format('woff2');    font-weight: 600;    font-style: normal;    font-display: swap;  }  @font-face {    font-family: 'Playfair Display';    src: url('../fonts/playfair-display-v40-latin-600italic.woff2') format('woff2');    font-weight: 600;    font-style: italic;    font-display: swap;  }  @font-face {    font-family: 'Playfair Display';    src: url('../fonts/playfair-display-v40-latin-700.woff2') format('woff2');    font-weight: 700;    font-style: normal;    font-display: swap;  }
-  :root {
-    --cream: #FDF8F0;
-    --warm-white: #FFFBF5;
-    --blush: #E8C4B8;
-    --blush-light: #F3DDD5;
-    --rose: #C4867A;
-    --rose-deep: #A66B60;
-    --sage: #8FAD8A;
-    --sage-deep: #6B8B6B;
-    --gold: #C9A96E;
-    --gold-light: #E8D5A8;
-    --navy: #2C3E50;
-    --charcoal: #3A3A3A;
-    --text: #4A4040;
-    --text-light: #7A6B6B;
-    --shadow-soft: 0 4px 30px rgba(74, 64, 64, 0.08);
-    --shadow-hover: 0 8px 40px rgba(74, 64, 64, 0.14);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Lora', Georgia, serif;
-    background: var(--cream);
-    color: var(--text);
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* === DECORATIVE BACKGROUND === */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background:
-      radial-gradient(ellipse at 20% 10%, rgba(232, 196, 184, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 90%, rgba(201, 169, 110, 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(143, 173, 138, 0.06) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* === NAVIGATION === */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    background: rgba(253, 248, 240, 0.92);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(232, 196, 184, 0.3);
-    transition: all 0.4s ease;
-  }
-
-  nav.scrolled {
-    box-shadow: 0 2px 20px rgba(74, 64, 64, 0.08);
-  }
-
-  .nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.8rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .nav-logo {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--rose-deep);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    align-items: center;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--text);
-    font-family: 'Lora', serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
-    transition: color 0.3s;
-    position: relative;
-  }
-
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 1.5px;
-    background: var(--rose);
-    transition: width 0.3s ease;
-  }
-
-  .nav-links a:hover { color: var(--rose-deep); }
-  .nav-links a:hover::after { width: 100%; }
-
-  .mobile-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-  }
-
-  .mobile-toggle span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--text);
-    margin: 5px 0;
-    transition: all 0.3s;
-  }
-
-  /* === HERO === */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 8rem 2rem 4rem;
-    z-index: 1;
-  }
-
-  .hero-content {
-    max-width: 800px;
-    animation: fadeUp 1.2s ease-out;
-  }
-
-  .hero-flourish {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 0 auto 2rem;
-    animation: fadeUp 1.2s ease-out 0.2s both;
-  }
-
-  .hero-tagline {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--rose);
-    margin-bottom: 1.5rem;
-    animation: fadeUp 1.2s ease-out 0.3s both;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 700;
-    color: var(--charcoal);
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-    animation: fadeUp 1.2s ease-out 0.4s both;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--rose-deep);
-    font-weight: 400;
-  }
-
-  .hero-subtitle {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-    color: var(--text-light);
-    margin-top: 1rem;
-    font-style: italic;
-    animation: fadeUp 1.2s ease-out 0.6s both;
-  }
-
-  .hero-description {
-    font-size: 1.05rem;
-    color: var(--text-light);
-    max-width: 550px;
-    margin: 2rem auto;
-    animation: fadeUp 1.2s ease-out 0.8s both;
-  }
-
-  .hero-cta {
-    display: inline-flex;
-    gap: 1.2rem;
-    margin-top: 1rem;
-    animation: fadeUp 1.2s ease-out 1s both;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 0.85rem 2.2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-family: 'Lora', serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.06em;
-    transition: all 0.4s ease;
-    cursor: pointer;
-  }
-
-  .btn-primary {
-    background: var(--rose-deep);
-    color: white;
-    border: 2px solid var(--rose-deep);
-  }
-
-  .btn-primary:hover {
-    background: transparent;
-    color: var(--rose-deep);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    border: 2px solid var(--blush);
-  }
-
-  .btn-outline:hover {
-    background: var(--blush-light);
-    border-color: var(--rose);
-    transform: translateY(-2px);
-  }
-
-  /* === SECTIONS === */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 6rem 2rem;
-  }
-
-  .section-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .section-header h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    color: var(--charcoal);
-    margin-bottom: 0.5rem;
-  }
-
-  .section-header p {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 1.15rem;
-    color: var(--text-light);
-    font-style: italic;
-  }
-
-  .section-divider {
-    width: 50px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 1rem auto 0;
-  }
-
-  /* === ABOUT === */
-  .about {
-    background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
-  }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .about-image-wrapper {
-    position: relative;
-  }
-
-  .about-image-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -12px;
-    left: -12px;
-    right: 12px;
-    bottom: 12px;
-    border: 2px solid var(--blush);
-    border-radius: 12px;
-  }
-
-  .about-image {
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: var(--shadow-soft);
-    position: relative;
-    background: linear-gradient(135deg, var(--blush-light), var(--gold-light));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    color: var(--rose);
-  }
-
-  .about-text h3 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.8rem;
-    color: var(--charcoal);
-    margin-bottom: 1.5rem;
-  }
-
-  .about-text p {
-    margin-bottom: 1.2rem;
-    color: var(--text);
-    font-size: 1rem;
-  }
-
-  .about-text .signature {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-style: italic;
-    font-size: 1.3rem;
-    color: var(--rose-deep);
-    margin-top: 1.5rem;
-  }
-
-  /* === SERIES SHOWCASE === */
-  .series {
-    background: var(--warm-white);
-  }
-
-  .series-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
-  }
-
-  .series-card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow-soft);
-    transition: all 0.5s ease;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .series-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-hover);
-  }
-
-  .series-card-header {
-    padding: 2.5rem 2rem 1.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .series-card-header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-  }
-
-  .series-card:nth-child(1) .series-card-header::before {
-    background: linear-gradient(90deg, var(--rose), var(--blush));
-  }
-  .series-card:nth-child(2) .series-card-header::before {
-    background: linear-gradient(90deg, var(--sage-deep), var(--sage));
-  }
-  .series-card:nth-child(3) .series-card-header::before {
-    background: linear-gradient(90deg, var(--gold), var(--gold-light));
-  }
-  .series-card:nth-child(4) .series-card-header::before {
-    background: linear-gradient(90deg, var(--navy), #4A6B8A);
-  }
-  .series-card:nth-child(5) .series-card-header::before {
-    background: linear-gradient(90deg, #8B6FAE, #B89FD4);
-  }
-  .series-icon {    width: 3rem;    height: 3rem;    display: flex;    align-items: center;    justify-content: center;    margin-bottom: 1rem;  }  .series-icon img {    max-width: 100%;    max-height: 100%;    object-fit: contain;  }
-  .series-card h3 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.35rem;
-    color: var(--charcoal);
-    margin-bottom: 0.4rem;
-  }
-
-  .series-card .book-count {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.9rem;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-
-  .series-card-body {
-    padding: 0 2rem 2rem;
-  }
-
-  .series-card-body p {
-    font-size: 0.95rem;
-    color: var(--text-light);
-    line-height: 1.7;
-  }
-
-  .book-list {
-    list-style: none;
-    margin-top: 1.2rem;
-    padding-top: 1.2rem;
-    border-top: 1px solid rgba(232, 196, 184, 0.3);
-  }
-
-  .book-list li {
-    font-size: 0.88rem;
-    color: var(--text);
-    padding: 0.35rem 0;
-    padding-left: 1.2rem;
-    position: relative;
-  }
-
-  .book-list li::before {
-    content: '♡';
-    position: absolute;
-    left: 0;
-    color: var(--blush);
-    font-size: 0.75rem;
-  }
-
-  /* === FEATURED BOOKS === */
-  .featured {
-    background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
-  }
-
-  .featured-scroll {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 1.8rem;
-  }
-
-  .book-card {
-    text-align: center;
-    transition: transform 0.4s ease;
-  }
-
-  .book-card:hover {
-    transform: translateY(-5px);
-  }
-  .book-card:hover .book-cover {    transform: scale(1.05);    transition: transform 0.3s ease;  }
-  .book-cover {
-    width: 100%;
-    aspect-ratio: 2/3;
-    border-radius: 8px;
-    box-shadow: 4px 6px 20px rgba(74, 64, 64, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.85rem;
-    padding: 1.2rem;
-    text-align: center;
-    color: white;
-    font-weight: 600;
-    line-height: 1.3;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .book-cover::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  .book-card .book-title {
-    margin-top: 0.8rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.85rem;
-    color: var(--charcoal);
-    font-weight: 600;
-  }
-
-  .book-card .book-series-tag {
-    font-size: 0.75rem;
-    color: var(--text-light);
-    font-style: italic;
-  }
-
-  /* === NEWSLETTER === */
-  .newsletter {
-    background:
-      linear-gradient(135deg, var(--rose-deep) 0%, var(--rose) 40%, #C08870 100%);
-    color: white;
-    text-align: center;
-  }
-
-  .newsletter .section-header h2 { color: white; }
-  .newsletter .section-header p { color: rgba(255,255,255,0.85); }
-  .newsletter .section-divider { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent); }
-
-  .newsletter-text {
-    max-width: 550px;
-    margin: 0 auto 2rem;
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.9);
-  }
-
-  .newsletter-form {
-    display: flex;
-    gap: 0.8rem;
-    max-width: 480px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .newsletter-form input {
-    flex: 1;
-    min-width: 220px;
-    padding: 0.9rem 1.4rem;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-radius: 50px;
-    background: rgba(255,255,255,0.15);
-    color: white;
-    font-family: 'Lora', serif;
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.3s;
-  }
-
-  .newsletter-form input::placeholder { color: rgba(255,255,255,0.6); }
-  .newsletter-form input:focus { border-color: rgba(255,255,255,0.7); }
-
-  .btn-newsletter {
-    padding: 0.9rem 2rem;
-    border: 2px solid white;
-    border-radius: 50px;
-    background: white;
-    color: var(--rose-deep);
-    font-family: 'Lora', serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s;
-    letter-spacing: 0.04em;
-  }
-
-  .btn-newsletter:hover {
-    background: transparent;
-    color: white;
-  }
-
-  /* === CONNECT === */
-  .connect {
-    background: var(--warm-white);
-    text-align: center;
-  }
-
-  .connect-links {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-  }
-
-  .connect-link {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    text-decoration: none;
-    color: var(--text);
-    font-family: 'Lora', serif;
-    font-size: 0.95rem;
-    padding: 0.8rem 1.6rem;
-    border: 1.5px solid var(--blush);
-    border-radius: 50px;
-    transition: all 0.3s;
-  }
-
-  .connect-link:hover {
-    background: var(--blush-light);
-    border-color: var(--rose);
-    color: var(--rose-deep);
-    transform: translateY(-2px);
-  }
-
-  .connect-link svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  /* === FOOTER === */
-  footer {
-    position: relative;
-    z-index: 1;
-    background: var(--charcoal);
-    color: rgba(255,255,255,0.7);
-    text-align: center;
-    padding: 3rem 2rem;
-  }
-
-  .footer-logo {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.4rem;
-    color: white;
-    margin-bottom: 0.5rem;
-  }
-
-  footer p {
-    font-size: 0.85rem;
-    margin-top: 0.3rem;
-  }
-
-  footer .footer-tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1rem;
-    color: rgba(255,255,255,0.5);
-    margin-top: 0.8rem;
-  }
-
-  /* === ANIMATIONS === */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .fade-in {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: all 0.8s ease-out;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* === RESPONSIVE === */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .nav-links.open {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: rgba(253, 248, 240, 0.97);
-      padding: 1.5rem 2rem;
-      gap: 1.2rem;
-      border-bottom: 1px solid var(--blush-light);
-    }
-    .mobile-toggle { display: block; }
-
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .about-image-wrapper {
-      max-width: 280px;
-      margin: 0 auto;
-    }
-
-    .hero { min-height: 90vh; padding-top: 7rem; }
-
-    section { padding: 4rem 1.5rem; }
-
-    .series-grid { grid-template-columns: 1fr; }
-
-    .featured-scroll {
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 1.2rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero h1 { font-size: 2.6rem; }
-    .hero-cta { flex-direction: column; align-items: center; }
-    .btn { width: 100%; text-align: center; max-width: 280px; }
-  }

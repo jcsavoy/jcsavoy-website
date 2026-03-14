@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://jcsavoy.github.io/jcsavoy-website/sitemap.xml
