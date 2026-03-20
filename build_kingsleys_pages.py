@@ -66,9 +66,9 @@ books = [
 for b in books:
     html = template
     html = html.replace("The Great Christmas Disaster Book Page", b["title"] + " Book Page")
-    html = html.replace("The Great Christmas Disaster", b["title"])
     html = html.replace("Love Only #1", "The Kingsleys #" + b["id"])
     html = html.replace("1-LO The Great Christmas Disaster.jpg", b["cover"])
+    html = html.replace("The Great Christmas Disaster", b["title"])
     html = html.replace("the-great-christmas-disaster-book-page.html", b["file"])
     
     # Replace Button
