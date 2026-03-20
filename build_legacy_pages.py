@@ -41,7 +41,7 @@ books = [
         "id": 1,
         "title": "The Billionaire’s Stand-In Fiancée",
         "slug": "the-billionaires-stand-in-fiancee",
-        "cover": "1-B The Billionaire's Stand-In Fiancée.jpg",
+        "cover": "1-b-stand-in-fiancee.jpg",
         "link": "https://amzn.to/4spg9QA"
     },
     {
