@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
     <title>JC Savoy website</title>
-    <link href="https://jcsavoy.github.io/jcsavoy-website/feed.xml" rel="self" />
-    <link href="https://jcsavoy.github.io/jcsavoy-website" />
+    <link href="https://jcsavoy.com/feed.xml" rel="self" />
+    <link href="https://jcsavoy.com" />
     <updated>1969-12-31T19:00:00-05:00</updated>
     <author>
         <name>JC Savoy</name>
     </author>
-    <id>https://jcsavoy.github.io/jcsavoy-website</id>
+    <id>https://jcsavoy.com</id>
 
 </feed>

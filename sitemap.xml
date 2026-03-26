@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="https://jcsavoy.github.io/jcsavoy-website/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="https://jcsavoy.com/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 <url>
-<loc>https://jcsavoy.github.io/jcsavoy-website/</loc>
+<loc>https://jcsavoy.com/</loc>
 </url>
 <url>
-<loc>https://jcsavoy.github.io/jcsavoy-website/love-only-series-page.html</loc>
+<loc>https://jcsavoy.com/love-only-series-page.html</loc>
 <lastmod>2026-03-19T07:15:27-04:00</lastmod>
 </url>
 <url>
-<loc>https://jcsavoy.github.io/jcsavoy-website/the-great-christmas-disaster-book-page.html</loc>
+<loc>https://jcsavoy.com/the-great-christmas-disaster-book-page.html</loc>
 <lastmod>2026-03-18T19:24:03-04:00</lastmod>
 </url>
 </urlset>
