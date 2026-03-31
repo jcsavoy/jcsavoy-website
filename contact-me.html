@@ -21,7 +21,7 @@
 
     <div style="border-top: 1px solid #eaeaea; margin: 2rem 0; width: 100%;"></div>
 
-    <form style="display: flex; flex-direction: column; gap: 1.5rem; text-align: left; max-width: 500px; margin: 0 auto;" action="https://formspree.io/f/YOUR_FORMSPREE_ID_HERE" method="post">
+    <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.5rem; text-align: left; max-width: 500px; margin: 0 auto;" action="https://formspree.io/f/xeepkbqq" method="POST">
         <div>
             <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Your Name</label>
             <input type="text" id="name" name="name" placeholder="Jane Doe" style="width: 100%; padding: 15px 20px; border: 1px solid #e1e4e8; border-radius: 8px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.3s ease; box-sizing: border-box;" required>
@@ -35,7 +35,7 @@
             <textarea id="message" name="message" rows="6" placeholder="I loved your recent book..." style="width: 100%; padding: 15px 20px; border: 1px solid #e1e4e8; border-radius: 8px; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.3s ease; resize: vertical; box-sizing: border-box;" required></textarea>
         </div>
         <button type="submit" class="btn-primary" style="margin-top: 1rem; width: 100%; justify-content: center; cursor: pointer;">Send Message</button>
-        <p style="text-align:center; font-size:0.85rem; margin-top:0.5rem; color:#888;">Note: Form submission requires setting up a Formspree endpoint.</p>
+        <div id="contact-status" style="display:none; margin-top:1.5rem; padding: 15px; border-radius: 8px; font-weight: 500; text-align: center;"></div>
     </form>
 </div>
 </div>
@@ -45,4 +45,49 @@
     <p style="margin-bottom: 0.5rem;">© 2026 JC Savoy · Escape With Love Publishing</p>
     <p class="footer-tagline" style="color: var(--premium-brand);">Where every story ends with love</p>
 </footer>
+<script>
+    const contactForm = document.getElementById('contact-form');
+    const contactStatus = document.getElementById('contact-status');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending...';
+
+            const data = new FormData(event.target);
+            
+            try {
+                const response = await fetch(event.target.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    contactForm.reset();
+                    contactStatus.style.display = 'block';
+                    contactStatus.style.backgroundColor = 'rgba(74, 144, 226, 0.1)';
+                    contactStatus.style.color = '#4a90e2';
+                    contactStatus.innerHTML = "✨ Your message has been sent successfully! I'll get back to you soon.";
+                    submitBtn.style.display = 'none';
+                } else {
+                    const errorDetails = await response.json();
+                    throw new Error(errorDetails.error || 'Submission failed');
+                }
+            } catch (error) {
+                console.error('Contact Form Error:', error);
+                contactStatus.style.display = 'block';
+                contactStatus.style.backgroundColor = 'rgba(255, 0, 0, 0.05)';
+                contactStatus.style.color = '#d00000';
+                contactStatus.innerHTML = "Oops! There was a problem sending your message. Please try again later.";
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Message';
+            }
+        });
+    }
+</script>
 </body></html>
