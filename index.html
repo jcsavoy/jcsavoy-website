@@ -525,7 +525,7 @@
       </div>
      </section>
      <section class="newsletter" id="newsletter" style="background: #f0a0a6; padding: 1.5rem 0;">
-      <div class="premium-newsletter-wrapper" style="padding: 1.5rem; max-height: 350px; overflow: hidden; align-items: center;">
+      <div class="premium-newsletter-wrapper" style="padding: 2rem; min-height: 350px; overflow: visible; align-items: center;">
        <div class="premium-newsletter-image">
         <img alt="Newsletter Image" loading="lazy" src="media/files/banners/cherry-blossom-newsletter.png"/>
        </div>
@@ -539,11 +539,11 @@
         <div class="newsletter-form">
           <style>
             .news-field { flex: 1; min-width: 200px; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
-            .news-field label { font-family: 'Lora', serif; font-size: 0.9rem; color: #fff; font-weight: 500; }
+            .news-field label { font-family: 'Lora', serif; font-size: 0.95rem; color: #3A3A3A; font-weight: 600; }
             .news-field input::placeholder { color: #999 !important; opacity: 1; }
             @media (max-width: 600px) { .news-field { width: 100%; } }
           </style>
-          <form action="https://n8n.srv1257557.hstgr.cloud/webhook/subscribe" method="POST" style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 900px; margin: 0 auto; align-items: flex-end;">
+          <form action="https://n8n.srv1257557.hstgr.cloud/webhook/subscribe" method="POST" style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-start; width: 100%; max-width: 900px; margin: 0; align-items: flex-end;">
             <div class="news-field">
               <label for="first_name">First Name</label>
               <input type="text" id="first_name" name="first_name" placeholder="e.g. Jean" style="width: 100%; padding: 12px 20px; border-radius: 50px; border: 1px solid #ddd; background: #fff; color: #333; font-family: Lora, serif;">
