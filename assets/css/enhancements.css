@@ -67,6 +67,61 @@ section.series .section-inner::after {
   transform: rotate(165deg);
 }
 
+/* === HERO SECTION ENHANCEMENT === */
+/* Small floral spring above JC Savoy name */
+.hero-content h1::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 10px;
+  background-image: var(--blossom-img);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  filter: drop-shadow(0 2px 4px rgba(196, 104, 138, 0.2));
+}
+
+/* === SECTION HEADERS & READABILITY === */
+.section-header p {
+  color: #555 !important; /* Darker, more readable gray */
+  font-weight: 500;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Flanking flowers for My Series and other H2s */
+.section-header h2 {
+  position: relative;
+  display: inline-block;
+  padding: 0 50px; /* Space for the flowers */
+}
+
+.section-header h2::before,
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 35px;
+  height: 35px;
+  background-image: var(--blossom-img);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  transform: translateY(-50%);
+}
+
+.section-header h2::before {
+  left: 0;
+  transform: translateY(-50%) rotate(-20deg);
+}
+
+.section-header h2::after {
+  right: 0;
+  transform: translateY(-50%) rotate(20deg) scaleX(-1);
+}
+
 /* === SECTION BACKGROUNDS === */
 #whats-next {
   background: radial-gradient(circle at top right, #fff5f5, var(--blush)) !important;
@@ -106,24 +161,9 @@ section.connect#connect {
   background: linear-gradient(to right, transparent, var(--gold), transparent);
 }
 
-/* Replacing the 🌸 emoji with a refined floral accent in the header instead */
-.section-header h2::before {
-  content: '';
-  display: block;
-  width: 30px;
-  height: 30px;
-  margin: 0 auto 10px;
-  background-image: var(--blossom-img);
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.6;
-}
-
-.section-header h2::after {
-  background: linear-gradient(to right, transparent, var(--petal), transparent);
-  height: 2px;
-  width: 80px;
-  margin-top: 10px;
+/* Divider fleur in the center */
+.section-divider::before {
+  /* Added to existing logic via section-divider structure */
 }
 
 /* === SERIES CARD ELEVATION === */
