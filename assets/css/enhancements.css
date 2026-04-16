@@ -20,7 +20,7 @@
   --cm-color:    #8a5a3a;
 
   /* Assets */
-  --blossom-img: url('../media/files/cherry-blossom-newsletter.png');
+  --blossom-img: url('../../media/files/cherry-blossom-newsletter.png');
 }
 
 /* === BASE LAYOUT REFINEMENTS === */
@@ -72,30 +72,30 @@ section.series .section-inner::after {
 .hero-content h1::before {
   content: '';
   display: block;
-  width: 40px;
-  height: 40px;
-  margin: 0 auto 10px;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
   background-image: var(--blossom-img);
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.8;
-  filter: drop-shadow(0 2px 4px rgba(196, 104, 138, 0.2));
+  opacity: 1;
+  filter: drop-shadow(0 2px 6px rgba(196, 104, 138, 0.3));
 }
 
 /* === SECTION HEADERS & READABILITY === */
 .section-header p {
-  color: #555 !important; /* Darker, more readable gray */
+  color: #222 !important; /* High contrast for readability */
   font-weight: 500;
+  font-size: 1.1rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0.5rem auto 1.5rem;
 }
 
 /* Flanking flowers for My Series and other H2s */
 .section-header h2 {
   position: relative;
   display: inline-block;
-  padding: 0 50px; /* Space for the flowers */
+  padding: 0 60px; /* Space for the flowers */
 }
 
 .section-header h2::before,
@@ -103,12 +103,12 @@ section.series .section-inner::after {
   content: '';
   position: absolute;
   top: 50%;
-  width: 35px;
-  height: 35px;
+  width: 45px;
+  height: 45px;
   background-image: var(--blossom-img);
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.7;
+  opacity: 0.9;
   transform: translateY(-50%);
 }
 
