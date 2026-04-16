@@ -1,8 +1,6 @@
 /* ============================================
-   JC SAVOY WEBSITE ENHANCEMENTS
-   Add this as a new file: assets/css/enhancements.css
-   Then add to index.html <head>:
-   <link href="assets/css/enhancements.css" rel="stylesheet"/>
+   JC SAVOY WEBSITE ENHANCEMENTS - SPRING SWEEP
+   Refined Design System with Floral Aesthetics
    ============================================ */
 
 /* === COLOR VARIABLES === */
@@ -15,157 +13,89 @@
   --gold:        #c9a96e;
 
   /* Series accent colors */
-  --lo-color:    #3a7fa8;   /* Love Only - coastal blue */
-  --kr-color:    #b07035;   /* Kingsleys - warm amber */
-  --wf-color:    #5a8a5a;   /* Whispering Falls - soft green */
-  --lb-color:    #6a5a9a;   /* Legacy Billionaires - deep violet */
-  --cm-color:    #8a5a3a;   /* Cozy Mysteries - warm brown */
+  --lo-color:    #3a7fa8;
+  --kr-color:    #b07035;
+  --wf-color:    #5a8a5a;
+  --lb-color:    #6a5a9a;
+  --cm-color:    #8a5a3a;
+
+  /* Assets */
+  --blossom-img: url('../media/files/cherry-blossom-newsletter.png');
 }
 
-/* === CHERRY BLOSSOM DIVIDER SVG (reusable) === */
-.blossom-divider {
-  text-align: center;
-  padding: 1.5rem 0 0.5rem;
-  line-height: 0;
-  overflow: hidden;
+/* === BASE LAYOUT REFINEMENTS === */
+.section-inner {
+  position: relative;
+  overflow: visible; /* Allow floral elements to peek out */
+  padding: 4rem 1.5rem;
 }
 
-.blossom-divider svg {
-  width: 220px;
-  height: 40px;
-  opacity: 0.55;
+/* === FLORAL CORNER DECALS === */
+/* Adding subtle floral springs to the corners of key sections */
+section.about .section-inner::before,
+section.series .section-inner::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 150px;
+  height: 150px;
+  background-image: var(--blossom-img);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(-15deg);
 }
 
-/* === ALTERNATING SECTION BACKGROUNDS === */
+section.about .section-inner::after,
+section.series .section-inner::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 180px;
+  height: 180px;
+  background-image: var(--blossom-img);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(165deg);
+}
+
+/* === SECTION BACKGROUNDS === */
 #whats-next {
-  background-color: var(--blush) !important;
+  background: radial-gradient(circle at top right, #fff5f5, var(--blush)) !important;
 }
 
 section.about#about {
-  background-color: var(--cream);
+  background: radial-gradient(circle at bottom left, #fff, var(--cream));
 }
 
 section.series#series {
-  background-color: var(--blush);
+  background: radial-gradient(circle at top left, #fff5f5, var(--blush));
 }
 
 section.featured#books {
   background-color: var(--cream);
 }
 
-/* newsletter already has its pink bg - leave it */
-
 section.connect#connect {
-  background-color: var(--blush);
+  background: radial-gradient(circle at center, #fff, var(--blush));
 }
 
-/* === SECTION HEADER REFINEMENTS === */
-.section-header h2 {
-  position: relative;
-  display: inline-block;
-}
-
-.section-header h2::after {
-  content: '';
-  display: block;
-  width: 60%;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--petal), transparent);
-  margin: 6px auto 0;
-}
-
-/* === SERIES CARD ACCENTS === */
-/* Give each card a top colored border based on series */
-.series-card {
-  border-top: 3px solid var(--petal);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  background: #ffffff;
-}
-
-.series-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(176, 96, 128, 0.15);
-}
-
-/* Target by banner image alt text via sibling selectors isn't reliable,
-   so we use nth-child for the 5 series cards */
-.series-grid > a:nth-child(1) .series-card { border-top-color: var(--lo-color); }
-.series-grid > a:nth-child(2) .series-card { border-top-color: var(--kr-color); }
-.series-grid > a:nth-child(3) .series-card { border-top-color: var(--wf-color); }
-.series-grid > a:nth-child(4) .series-card { border-top-color: var(--lb-color); }
-.series-grid > a:nth-child(5) .series-card { border-top-color: var(--cm-color); }
-
-/* Matching book count badge color per series */
-.series-grid > a:nth-child(1) .book-count { color: var(--lo-color); }
-.series-grid > a:nth-child(2) .book-count { color: var(--kr-color); }
-.series-grid > a:nth-child(3) .book-count { color: var(--wf-color); }
-.series-grid > a:nth-child(4) .book-count { color: var(--lb-color); }
-.series-grid > a:nth-child(5) .book-count { color: var(--cm-color); }
-
-/* === BOOK CARD HOVER === */
-.book-card {
-  transition: transform 0.2s ease;
-}
-
-.book-card:hover {
-  transform: translateY(-5px);
-}
-
-.book-card figure {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-  border-radius: 4px;
-  overflow: hidden;
-  transition: box-shadow 0.2s ease;
-}
-
-.book-card:hover figure {
-  box-shadow: 0 12px 32px rgba(176, 96, 128, 0.2);
-}
-
-/* === NAVBAR SUBTLE ENHANCEMENT === */
-#navbar {
-  background: linear-gradient(to right, #f5f2eb, #fdf0f0, #f5f2eb) !important;
-  border-bottom: 1px solid var(--petal);
-}
-
-/* === FOOTER WARMTH === */
-footer {
-  background: linear-gradient(160deg, #3a2240 0%, #4a2d4e 100%);
-  color: rgba(253,250,255,0.85);
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-}
-
-footer .footer-logo {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.6rem;
-  font-weight: 300;
-  color: #fdfaff;
-  letter-spacing: 2px;
-  margin-bottom: 0.5rem;
-}
-
-footer p {
-  color: rgba(253,250,255,0.5);
-  font-size: 0.85rem;
-  margin: 0.25rem 0;
-}
-
-footer .footer-tagline {
-  font-style: italic;
-  color: rgba(242,196,216,0.7);
-}
-
-/* === SMALL BLOSSOM PETAL DECORATIONS ON SECTION HEADERS === */
-/* A tiny petal SVG before each section divider line */
+/* === UPGRADED FLORAL DIVIDERS === */
 .section-divider {
-  position: relative;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin: 0.75rem auto;
-  width: 180px;
+  gap: 15px;
+  width: 280px !important;
+  margin: 1.5rem auto !important;
 }
 
 .section-divider::before,
@@ -173,45 +103,111 @@ footer .footer-tagline {
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold));
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
 }
 
-.section-divider::after {
-  background: linear-gradient(to left, transparent, var(--gold));
-}
-
-/* Add a small blossom emoji center of divider */
-.section-divider-center::before {
-  content: '🌸';
-  font-size: 0.85rem;
-}
-
-/* === ABOUT SECTION IMAGE FRAME === */
-.about-image {
-  position: relative;
-}
-
-.about-image::before {
+/* Replacing the 🌸 emoji with a refined floral accent in the header instead */
+.section-header h2::before {
   content: '';
-  position: absolute;
-  inset: -8px;
-  border: 2px solid var(--petal);
-  border-radius: 12px;
-  pointer-events: none;
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 10px;
+  background-image: var(--blossom-img);
+  background-size: contain;
+  background-repeat: no-repeat;
   opacity: 0.6;
 }
 
-/* === CONNECT BUTTONS HOVER === */
-.connect-link {
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+.section-header h2::after {
+  background: linear-gradient(to right, transparent, var(--petal), transparent);
+  height: 2px;
+  width: 80px;
+  margin-top: 10px;
 }
 
-.connect-link:hover {
-  background: var(--rose) !important;
-  color: #fff !important;
-  transform: translateY(-2px);
+/* === SERIES CARD ELEVATION === */
+.series-card {
+  border: 1px solid rgba(196, 104, 138, 0.1);
+  border-top: 4px solid var(--petal);
+  background: #ffffff;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
-.connect-link:hover img {
-  filter: brightness(0) invert(1);
+.series-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(176, 96, 128, 0.12);
+}
+
+/* Card Series Accent Colors */
+.series-grid > a:nth-child(1) .series-card { border-top-color: var(--lo-color); }
+.series-grid > a:nth-child(2) .series-card { border-top-color: var(--kr-color); }
+.series-grid > a:nth-child(3) .series-card { border-top-color: var(--wf-color); }
+.series-grid > a:nth-child(4) .series-card { border-top-color: var(--lb-color); }
+.series-grid > a:nth-child(5) .series-card { border-top-color: var(--cm-color); }
+
+/* === BOOK CARD "BLOOM" EFFECT === */
+.book-card figure {
+  position: relative;
+  transition: all 0.4s ease;
+  border-radius: 6px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.book-card:hover figure {
+  transform: scale(1.02);
+  box-shadow: 0 15px 35px rgba(196, 104, 138, 0.25);
+}
+
+/* === NAVBAR & NAVIGATION === */
+#navbar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--blush);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.nav-links a:hover {
+  color: var(--rose) !important;
+}
+
+/* === FOOTER REFINEMENT === */
+footer {
+  background: #3a2240; /* Solid deep plum */
+  border-top: 4px solid var(--petal);
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--blossom-img);
+  background-size: 300px;
+  background-position: center;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+footer .footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 2rem;
+}
+
+/* === TYPOGRAPHY ENHANCEMENTS === */
+.about-text p {
+  line-height: 1.9;
+  letter-spacing: 0.2px;
+}
+
+h2, h3 {
+  font-weight: 400 !important;
+  letter-spacing: 1px;
 }
