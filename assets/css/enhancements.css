@@ -1,0 +1,217 @@
+/* ============================================
+   JC SAVOY WEBSITE ENHANCEMENTS
+   Add this as a new file: assets/css/enhancements.css
+   Then add to index.html <head>:
+   <link href="assets/css/enhancements.css" rel="stylesheet"/>
+   ============================================ */
+
+/* === COLOR VARIABLES === */
+:root {
+  --blush:       #fdf0f0;
+  --cream:       #faf7f4;
+  --rose:        #c4688a;
+  --petal:       #f2c4d8;
+  --sage:        #e8f0e8;
+  --gold:        #c9a96e;
+
+  /* Series accent colors */
+  --lo-color:    #3a7fa8;   /* Love Only - coastal blue */
+  --kr-color:    #b07035;   /* Kingsleys - warm amber */
+  --wf-color:    #5a8a5a;   /* Whispering Falls - soft green */
+  --lb-color:    #6a5a9a;   /* Legacy Billionaires - deep violet */
+  --cm-color:    #8a5a3a;   /* Cozy Mysteries - warm brown */
+}
+
+/* === CHERRY BLOSSOM DIVIDER SVG (reusable) === */
+.blossom-divider {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.blossom-divider svg {
+  width: 220px;
+  height: 40px;
+  opacity: 0.55;
+}
+
+/* === ALTERNATING SECTION BACKGROUNDS === */
+#whats-next {
+  background-color: var(--blush) !important;
+}
+
+section.about#about {
+  background-color: var(--cream);
+}
+
+section.series#series {
+  background-color: var(--blush);
+}
+
+section.featured#books {
+  background-color: var(--cream);
+}
+
+/* newsletter already has its pink bg - leave it */
+
+section.connect#connect {
+  background-color: var(--blush);
+}
+
+/* === SECTION HEADER REFINEMENTS === */
+.section-header h2 {
+  position: relative;
+  display: inline-block;
+}
+
+.section-header h2::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--petal), transparent);
+  margin: 6px auto 0;
+}
+
+/* === SERIES CARD ACCENTS === */
+/* Give each card a top colored border based on series */
+.series-card {
+  border-top: 3px solid var(--petal);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: #ffffff;
+}
+
+.series-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(176, 96, 128, 0.15);
+}
+
+/* Target by banner image alt text via sibling selectors isn't reliable,
+   so we use nth-child for the 5 series cards */
+.series-grid > a:nth-child(1) .series-card { border-top-color: var(--lo-color); }
+.series-grid > a:nth-child(2) .series-card { border-top-color: var(--kr-color); }
+.series-grid > a:nth-child(3) .series-card { border-top-color: var(--wf-color); }
+.series-grid > a:nth-child(4) .series-card { border-top-color: var(--lb-color); }
+.series-grid > a:nth-child(5) .series-card { border-top-color: var(--cm-color); }
+
+/* Matching book count badge color per series */
+.series-grid > a:nth-child(1) .book-count { color: var(--lo-color); }
+.series-grid > a:nth-child(2) .book-count { color: var(--kr-color); }
+.series-grid > a:nth-child(3) .book-count { color: var(--wf-color); }
+.series-grid > a:nth-child(4) .book-count { color: var(--lb-color); }
+.series-grid > a:nth-child(5) .book-count { color: var(--cm-color); }
+
+/* === BOOK CARD HOVER === */
+.book-card {
+  transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+.book-card figure {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.book-card:hover figure {
+  box-shadow: 0 12px 32px rgba(176, 96, 128, 0.2);
+}
+
+/* === NAVBAR SUBTLE ENHANCEMENT === */
+#navbar {
+  background: linear-gradient(to right, #f5f2eb, #fdf0f0, #f5f2eb) !important;
+  border-bottom: 1px solid var(--petal);
+}
+
+/* === FOOTER WARMTH === */
+footer {
+  background: linear-gradient(160deg, #3a2240 0%, #4a2d4e 100%);
+  color: rgba(253,250,255,0.85);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+footer .footer-logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #fdfaff;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+footer p {
+  color: rgba(253,250,255,0.5);
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+}
+
+footer .footer-tagline {
+  font-style: italic;
+  color: rgba(242,196,216,0.7);
+}
+
+/* === SMALL BLOSSOM PETAL DECORATIONS ON SECTION HEADERS === */
+/* A tiny petal SVG before each section divider line */
+.section-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0.75rem auto;
+  width: 180px;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+
+.section-divider::after {
+  background: linear-gradient(to left, transparent, var(--gold));
+}
+
+/* Add a small blossom emoji center of divider */
+.section-divider-center::before {
+  content: '🌸';
+  font-size: 0.85rem;
+}
+
+/* === ABOUT SECTION IMAGE FRAME === */
+.about-image {
+  position: relative;
+}
+
+.about-image::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 2px solid var(--petal);
+  border-radius: 12px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* === CONNECT BUTTONS HOVER === */
+.connect-link {
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.connect-link:hover {
+  background: var(--rose) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+.connect-link:hover img {
+  filter: brightness(0) invert(1);
+}
