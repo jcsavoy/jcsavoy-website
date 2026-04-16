@@ -1,6 +1,6 @@
 /* ============================================
-   JC SAVOY WEBSITE ENHANCEMENTS - SPRING SWEEP
-   Refined Design System with Floral Aesthetics
+   JC SAVOY WEBSITE ENHANCEMENTS - FINAL STIR
+   Refined Design System with Seamless SVGs
    ============================================ */
 
 :root {
@@ -18,9 +18,14 @@
   --lb-color:    #6a5a9a;
   --cm-color:    #8a5a3a;
 
-  /* Assets - PNG Icons with high-detail branches */
-  --blossom-img: url('../../media/files/blossom-icon.png');
-  --spring-img:  url('../../media/files/spring-icon.png');
+  /* -- SEAMLESS SVG ASSETS -- */
+  /* These are embedded directly to ensure transparency and zero load errors */
+
+  /* Single Blossom Icon */
+  --blossom-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg transform='translate(50,50)'%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(0)'/%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(72)'/%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(144)'/%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(216)'/%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='10' fill='%23c4688a'/%3E%3Ccircle cx='0' cy='0' r='4' fill='%23f9d45a'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* Flowered Branch "Spring" Icon */
+  --spring-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Cpath d='M10,70 Q40,65 60,30 T110,10' stroke='%235d4037' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M60,30 Q80,25 90,40' stroke='%235d4037' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3Cg transform='translate(60,30) scale(0.4)'%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(0)'/%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(72)'/%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(144)'/%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(216)'/%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(288)'/%3E%3Ccircle r='10' fill='%23c4688a'/%3E%3C/g%3E%3Cg transform='translate(100,15) scale(0.3)'%3E%3Cpath d='M0,-40 C15,-40 30,-25 30,-10 C30,5 15,20 0,20 C-15,20 -30,5 -30,-10 C-30,-25 -15,-40 0,-40' fill='%23f2c4d8' transform='rotate(20)'/%3E%3Ccircle r='10' fill='%23c4688a'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* === BASE LAYOUT REFINEMENTS === */
@@ -35,24 +40,30 @@
 .hero-content h1::before {
   content: '';
   display: block;
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 20px;
-  background-image: var(--blossom-img);
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
+  background-image: var(--blossom-svg);
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 1;
-  mix-blend-mode: multiply; /* Removes white background on light surfaces */
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.1));
+}
+
+/* Hero Text Readability */
+.hero-content p {
+  color: #111 !important;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
 /* === SECTION HEADERS & READABILITY === */
 .section-header h2 {
   position: relative;
   display: inline-block;
-  padding: 0 90px;
+  padding: 0 85px; /* Wider padding for the flanking springs */
   font-family: 'Playfair Display', serif;
-  color: #3a2240;
+  color: #2d1a31;
 }
 
 /* Flanking flowered branches (Springs) */
@@ -62,28 +73,28 @@
   position: absolute;
   top: 50%;
   width: 70px;
-  height: 70px;
-  background-image: var(--spring-img);
+  height: 50px;
+  background-image: var(--spring-svg);
   background-size: contain;
   background-repeat: no-repeat;
-  mix-blend-mode: multiply; /* Removes white background */
   transform: translateY(-50%);
 }
 
 .section-header h2::before {
   left: 0;
-  transform: translateY(-50%) rotate(-15deg);
+  transform: translateY(-50%) rotate(-5deg);
 }
 
 .section-header h2::after {
   right: 0;
-  transform: translateY(-50%) rotate(15deg) scaleX(-1);
+  transform: translateY(-50%) rotate(5deg) scaleX(-1);
 }
 
+/* Sub-text forced readability */
 .section-header p {
-  color: #1a1a1a !important; /* ULTRA DARK for maximum readability */
-  font-weight: 500;
-  font-size: 1.2rem;
+  color: #000000 !important; /* PURE BLACK for maximum clarity */
+  font-weight: 600;
+  font-size: 1.25rem;
   max-width: 680px;
   margin: 1.2rem auto 2.5rem;
   line-height: 1.7;
@@ -111,30 +122,26 @@ section.series#series {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.series-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(176, 96, 128, 0.15);
-}
-
-/* Typography contrast in cards */
+/* Card titles and text */
 .series-card h3 {
-  color: #3a2240;
-  font-weight: 600;
+  color: #2d1a31;
+  font-weight: 700;
 }
 
 .series-card p {
-  color: #222 !important;
-  line-height: 1.6;
-  font-weight: 450;
+  color: #1a1a1a !important;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+.series-card ul li {
+  color: #000 !important;
+  font-weight: 600;
 }
 
 .series-card ul li a {
   color: #333 !important;
-  font-weight: 500;
-}
-
-.series-card ul li a:hover {
-  color: var(--rose) !important;
+  font-weight: 600;
 }
 
 /* === FOOTER === */
