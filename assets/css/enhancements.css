@@ -1,6 +1,6 @@
 /* ============================================
    JC SAVOY WEBSITE ENHANCEMENTS - SPRING SWEEP
-   Refined Design System with Floral Aesthetics (SVG Edition)
+   Refined Design System with Floral Aesthetics
    ============================================ */
 
 :root {
@@ -18,12 +18,9 @@
   --lb-color:    #6a5a9a;
   --cm-color:    #8a5a3a;
 
-  /* Integrated SVG Assets (No loading required) */
-  /* Single Blossom */
-  --blossom-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 50c-15-20-40-10-40 10 0 15 15 25 35 15-5 25 5 40 20 40 15 0 25-15 15-35 25 5 40-10 40-25 0-20-25-30-40-10-5-25-35-25-30 5z' fill='%23f2c4d8'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23c4688a'/%3E%3C/svg%3E");
-  
-  /* Branch Spring */
-  --spring-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 90c30-10 45-35 55-65M55 25c5 5 20 0 25-10M55 25c-5-10-20-5-25 5' stroke='%234a3120' stroke-width='2' fill='none'/%3E%3Ccircle cx='65' cy='25' r='10' fill='%23f2c4d8'/%3E%3Ccircle cx='65' cy='25' r='3' fill='%23c4688a'/%3E%3Ccircle cx='85' cy='15' r='8' fill='%23f2c4d8'/%3E%3Ccircle cx='35' cy='45' r='7' fill='%23f2c4d8'/%3E%3C/svg%3E");
+  /* Assets - PNG Icons with high-detail branches */
+  --blossom-img: url('../../media/files/blossom-icon.png');
+  --spring-img:  url('../../media/files/spring-icon.png');
 }
 
 /* === BASE LAYOUT REFINEMENTS === */
@@ -41,33 +38,35 @@
   width: 60px;
   height: 60px;
   margin: 0 auto 20px;
-  background-image: var(--blossom-svg);
+  background-image: var(--blossom-img);
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 1;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  mix-blend-mode: multiply; /* Removes white background on light surfaces */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
 }
 
 /* === SECTION HEADERS & READABILITY === */
 .section-header h2 {
   position: relative;
   display: inline-block;
-  padding: 0 80px;
+  padding: 0 90px;
   font-family: 'Playfair Display', serif;
   color: #3a2240;
 }
 
-/* Flanking springs */
+/* Flanking flowered branches (Springs) */
 .section-header h2::before,
 .section-header h2::after {
   content: '';
   position: absolute;
   top: 50%;
-  width: 60px;
-  height: 60px;
-  background-image: var(--spring-svg);
+  width: 70px;
+  height: 70px;
+  background-image: var(--spring-img);
   background-size: contain;
   background-repeat: no-repeat;
+  mix-blend-mode: multiply; /* Removes white background */
   transform: translateY(-50%);
 }
 
@@ -86,7 +85,7 @@
   font-weight: 500;
   font-size: 1.2rem;
   max-width: 680px;
-  margin: 1rem auto 2rem;
+  margin: 1.2rem auto 2.5rem;
   line-height: 1.7;
 }
 
@@ -124,12 +123,13 @@ section.series#series {
 }
 
 .series-card p {
-  color: #333 !important;
+  color: #222 !important;
   line-height: 1.6;
+  font-weight: 450;
 }
 
 .series-card ul li a {
-  color: #444 !important;
+  color: #333 !important;
   font-weight: 500;
 }
 
@@ -139,6 +139,6 @@ section.series#series {
 
 /* === FOOTER === */
 footer {
-  background: #2d1a31 !important; /* Slightly darker for contrast */
+  background: #2d1a31 !important; 
   border-top: 5px solid var(--rose);
 }
