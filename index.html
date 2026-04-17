@@ -694,5 +694,16 @@
   }
   }
 </script>
+
+  <!-- Visitor Tracker -->
+  <script>
+    // background ping
+    fetch('https://n8n.srv1257557.hstgr.cloud/webhook/website-tracker', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ page: window.location.pathname || 'homepage' }),
+      keepalive: true
+    }).catch(() => {});
+  </script>
  </body>
 </html>
