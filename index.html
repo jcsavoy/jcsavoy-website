@@ -234,7 +234,7 @@
              Tidal Rivals
             </li>
             <li>
-             High Tide Highjinks
+             High Tide Hijinks
             </li>
             <li>
              The Wedding Fakers
@@ -558,6 +558,10 @@
             @media (max-width: 600px) { .news-field { width: 100%; } }
           </style>
           <form action="https://n8n.srv1257557.hstgr.cloud/webhook/subscribe" method="POST" style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-start; width: 100%; max-width: 900px; margin: 0; align-items: flex-end;">
+            <div style="display: none;" aria-hidden="true">
+              <label for="website_url">Website</label>
+              <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
+            </div>
             <div class="news-field">
               <label for="first_name">First Name</label>
               <input type="text" id="first_name" name="first_name" placeholder="e.g. Jean" style="width: 100%; padding: 12px 20px; border-radius: 50px; border: 1px solid #ddd; background: #fff; color: #333; font-family: Lora, serif;">

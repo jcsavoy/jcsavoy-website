@@ -14,9 +14,9 @@ books = [
     },
     {
         "id": "3",
-        "title": "High Tide High Jinks",
+        "title": "High Tide Hijinks",
         "file": "high-tide-highjinks-book-page.html",
-        "cover": "3-LO HIGH TIDE HIGIJINKS.jpeg",
+        "cover": "3-LO High Tide Hijinks.jpg",
         "blurb": "<h2>She talks to sea creatures. He writes incident reports. Cliffhaven thinks they're perfect for each other.</h2><p>Marine biologist Sharon Powell came to Cliffhaven, Maine, to study sea creatures. She did not come to be rescued from a tide pool by the most annoyingly calm Coast Guard officer on the Atlantic seaboard.</p><p>But when the town requires her to coordinate fieldwork with Lieutenant Zach Miller's patrol schedule, her six-month research grant becomes a daily negotiation between a woman who treats \"calculated risk\" as a job description and a man who rations his smiles like emergency supplies.</p><p>Then Zach copies two hundred and sixteen pages of handwritten tidal records because he thinks she'll find them useful. He adjusts his patrol route by twelve minutes. And when a government agency threatens to destroy her research site, the man assigned to facilitate? Also Zach.</p><p class=\"book-meta\">In a town where the bakery owner dispenses wisdom with scones and the florist considers everyone's love life a personal project, Sharon has to decide what scares her more: losing her research or admitting she doesn't want to leave.</p>"
     },
     {
