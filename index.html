@@ -163,30 +163,140 @@
      </section>
      <section class="about" id="about">
       <div class="section-inner">
-       <div class="about-grid">
-        <div class="about-image-wrapper fade-in">
-         <figure class="about-image">
-          <img alt="JC Savoy" data-is-external-image="true" loading="lazy" src="media/files/jc-savoy-cartoon.png"/>
-         </figure>
+       <style>
+.jcb-wrap{position:relative;overflow:hidden;padding:0 0 clamp(3.5rem,8vw,5.5rem)}
+.jcb-heading{text-align:center;margin:0 0 1.5rem}
+.jcb-stage{position:relative;perspective:2200px;display:flex;justify-content:center}
+.jcb-shelf{position:absolute;left:50%;transform:translateX(-50%);width:62%;bottom:-16px;height:26px;
+  border-radius:50%;background:radial-gradient(ellipse at center,rgba(70,45,30,.26),rgba(70,45,30,0) 70%);z-index:0;pointer-events:none}
+.jcb-book{position:relative;width:100%;max-width:880px;transform-style:preserve-3d}
+.jcb-spread{position:relative;display:grid;grid-template-columns:1fr 1fr;aspect-ratio:1.333;
+  container-type:inline-size;border-radius:5px;box-shadow:0 30px 70px -34px rgba(60,40,30,.28)}
+.jcb-leaf{background:#fdfaf3;padding:3.1cqi 3.4cqi}
+.jcb-l{opacity:0;background:linear-gradient(90deg,#fdfaf3 55%,#f2ebdc);padding-right:5cqi;border-radius:5px 0 0 5px;
+  display:flex;flex-direction:column;justify-content:center;box-shadow:inset -26px 0 30px -20px rgba(60,40,30,.55)}
+.jcb-r{background:linear-gradient(270deg,#fdfaf3 55%,#f2ebdc);padding-left:5cqi;border-radius:0 5px 5px 0;
+  box-shadow:inset 26px 0 30px -20px rgba(60,40,30,.55)}
+.jcb-leaf p{margin:0 0 1.5cqi;line-height:1.75;font-size:2.09cqi;color:#4a423a}
+.jcb-gutter{position:absolute;top:0;bottom:0;left:50%;width:34px;transform:translateX(-50%);z-index:3;pointer-events:none;
+  background:linear-gradient(90deg,rgba(60,40,30,0),rgba(60,40,30,.10) 30%,rgba(60,40,30,.22) 50%,rgba(60,40,30,.10) 70%,rgba(60,40,30,0))}
+.jcb-gutter::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(60,40,30,0),rgba(60,40,30,.30) 12%,rgba(60,40,30,.30) 88%,rgba(60,40,30,0))}
+.jcb-portrait{float:left;width:19cqi;margin:.4cqi 2.6cqi .8cqi 0;border-radius:4px;
+  border:1px solid rgba(120,90,60,.3);box-shadow:0 8px 18px -10px rgba(60,40,30,.28)}
+.jcb-sig{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-style:italic;font-size:2.4cqi;color:#b76e79}
+.jcb-cover{position:absolute;top:0;right:0;width:50%;height:100%;transform-origin:left center;
+  transform-style:preserve-3d;z-index:6;will-change:transform}
+.jcb-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-style:flat;
+  border-radius:4px 8px 8px 4px;display:flex;align-items:center;justify-content:center;padding:clamp(.9rem,2.2vw,1.5rem)}
+.jcb-face *{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.jcb-front{background:
+    repeating-linear-gradient(102deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px),
+    repeating-linear-gradient(14deg,rgba(0,0,0,.05) 0 3px,transparent 3px 7px),
+    linear-gradient(122deg,#5b2f38 0%,#3d1f27 68%,#2a1218 100%);
+  box-shadow:0 26px 60px -26px rgba(60,40,30,.28),inset 0 0 0 1px rgba(0,0,0,.35),inset 7px 0 16px -9px rgba(0,0,0,.8)}
+.jcb-front::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(115deg,rgba(255,255,255,.17),rgba(255,255,255,0) 36%)}
+.jcb-back{transform:rotateY(180deg);border-radius:8px 4px 4px 8px;
+  background:linear-gradient(255deg,#efe6d4,#e6dcc6 60%,#dcd0b6);
+  box-shadow:inset 0 0 0 1px rgba(150,120,80,.35),inset -8px 0 18px -10px rgba(60,40,30,.5)}
+.jcb-plate{position:relative;width:100%;height:100%;border:1.6px solid #c9a227;border-radius:3px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  padding:clamp(1rem,2.4vw,1.6rem);box-shadow:inset 0 0 0 4px rgba(201,162,39,.15)}
+.jcb-name{font-family:"Iowan Old Style",Palatino,Georgia,serif;color:#c9a227;
+  font-size:clamp(1.5rem,3.6vw,2.5rem);letter-spacing:.05em;text-shadow:0 1px 0 rgba(0,0,0,.55);text-align:center;line-height:1.1}
+.jcb-sub{font-size:clamp(.6rem,1.4vw,.75rem);letter-spacing:.34em;text-transform:uppercase;color:rgba(201,162,39,.85);text-align:center}
+.jcb-orn{color:#c9a227;font-size:1.3rem;line-height:1;opacity:.85}
+.jcb-rule{width:52%;height:1px;background:rgba(201,162,39,.55)}
+.jcb-branch{position:absolute;bottom:-14px;right:-16px;width:clamp(130px,18vw,200px);pointer-events:none}
+.jcb-branch.jcb-left{right:auto;left:-26px;bottom:-24px;width:clamp(90px,12vw,132px);transform:scaleX(-1);opacity:.5}
+@media(max-width:520px){
+  .jcb-spread{grid-template-columns:1fr;aspect-ratio:auto} .jcb-l,.jcb-r{box-shadow:none;border-radius:5px}
+  .jcb-gutter{display:none} .jcb-cover{width:100%}
+  .jcb-leaf p{font-size:1rem} .jcb-portrait{width:38%} .jcb-sig{font-size:1.15rem}
+  .jcb-leaf{padding:1.1rem 1.2rem}
+}
+@media (prefers-reduced-motion:reduce){.jcb-cover{display:none}.jcb-l{opacity:1}}
+       </style>
+       <noscript><style>.jcb-cover{display:none}.jcb-l{opacity:1}</style></noscript>
+       <div class="jcb-wrap">
+        <h3 class="jcb-heading">Meet JC Savoy</h3>
+        <div class="jcb-stage">
+         <div class="jcb-shelf"></div>
+         <div class="jcb-book" id="jcbBook">
+          <div class="jcb-spread" id="jcbSpread">
+           <div class="jcb-gutter"></div>
+           <div class="jcb-leaf jcb-l">
+            <p><img class="jcb-portrait" src="media/files/jc-savoy-cartoon.png" alt="JC Savoy">I grew up in a charming small town in New England, where the quaint streets and friendly neighbors left an indelible mark on my heart &mdash; and I&rsquo;ve been chasing that feeling on the page ever since.</p>
+            <p>After many years as an educator, I traded lesson plans for love stories. Now I spend my days creating the kind of romances I&rsquo;ve always loved to read &mdash; clean, sweet, and full of heart.</p>
+           </div>
+           <div class="jcb-leaf jcb-r">
+            <p>My stories take you to places where everyday folk smile and say hello, cowboys tip their hats, billionaires have hearts of gold, and small towns hold the biggest secrets.</p>
+            <p>Each night, you&rsquo;ll find me curled up with a Hallmark movie &mdash; a swoon-worthy romance or a delightful mystery. That nightly ritual fuels my passion for these stories.</p>
+            <p>I believe romance should make you smile, sigh, and stay up way past your bedtime turning pages. No cliffhangers on the happily ever after &mdash; that&rsquo;s guaranteed.</p>
+            <p class="jcb-sig">&mdash; JC</p>
+           </div>
+          </div>
+          <div class="jcb-cover" id="jcbCover">
+           <div class="jcb-face jcb-front" id="jcbFront">
+            <div class="jcb-plate">
+             <div class="jcb-orn">&#10086;</div>
+             <div class="jcb-name">JC Savoy</div>
+             <div class="jcb-rule"></div>
+             <div class="jcb-sub">Sweet Romance</div>
+            </div>
+           </div>
+           <div class="jcb-face jcb-back" id="jcbBack"></div>
+          </div>
+         </div>
         </div>
-        <div class="about-text fade-in">
-         <h3>
-          Meet JC Savoy
-         </h3>
-         <p>
-          After many years as an educator, I traded lesson plans for love stories. Now I spend my days creating the kind of romances I've always loved to read — clean, sweet, and full of heart.
-         </p>
-         <p>
-          My stories take you to places where everyday folk smile and say hello, cowboys tip their hats, billionaires have hearts of gold, and small towns hold the biggest secrets. Whether it's the dusty roads of Cottonwood Ridge or the charming streets of Whispering Falls, every story is a promise: love wins.
-         </p>
-         <p>
-          I believe romance should make you smile, sigh, and stay up way past your bedtime turning pages. No cliffhangers on the happily ever after — that's guaranteed.
-         </p>
-         <p class="signature">
-          — JC
-         </p>
-        </div>
+        <img class="jcb-branch" src="media/files/Blossom-branch.png" alt="">
+        <img class="jcb-branch jcb-left" src="media/files/Blossom-branch.png" alt="">
        </div>
+       <script>
+(function(){
+  var cover=document.getElementById('jcbCover'),book=document.getElementById('jcbBook'),
+      front=document.getElementById('jcbFront'),back=document.getElementById('jcbBack'),
+      left=document.querySelector('.jcb-l'),about=document.getElementById('about');
+  if(!cover||!('IntersectionObserver' in window)) return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var DUR=2900, raf=null;
+  function bez(t,p1,p2){var u=1-t;return 3*u*u*t*p1+3*u*t*t*p2+t*t*t;}
+  function ease(x){var lo=0,hi=1,t=x;for(var i=0;i<14;i++){t=(lo+hi)/2;
+    if(bez(t,0.38,0.18)<x){lo=t;}else{hi=t;}}return bez(t,0.01,1);}
+  function shift(){return window.innerWidth<=520?0:-(book.offsetWidth-cover.offsetWidth)/2;}
+  function closed(){
+    if(raf){cancelAnimationFrame(raf);raf=null;}
+    book.style.transition='none';cover.style.transition='none';
+    book.style.transform='translateX('+shift()+'px)';
+    cover.style.transform='rotateY(0deg)';cover.style.opacity='1';
+    front.style.opacity='1';back.style.opacity='0';left.style.transition='none';left.style.opacity='0';
+  }
+  function open(){
+    var dx=shift(),start=null,swapped=false;
+    cover.style.transition='none';book.style.transition='none';
+    function frame(ts){
+      if(start===null)start=ts;
+      var t=Math.min(1,(ts-start)/DUR), e=ease(t), ang=-180*e;
+      cover.style.transform='rotateY('+ang+'deg)';
+      book.style.transform='translateX('+(dx*(1-e))+'px)';
+      if(!swapped && Math.abs(ang)>=90){swapped=true;
+        front.style.opacity='0';back.style.opacity='1';
+        left.style.transition='opacity .55s ease';left.style.opacity='1';
+        cover.style.transition='opacity .45s ease';cover.style.opacity='0';}
+      if(t<1){raf=requestAnimationFrame(frame);}
+      else{raf=null;}
+    }
+    raf=requestAnimationFrame(frame);
+  }
+  closed();
+  var played=false;
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting&&!played){played=true;setTimeout(open,220);}
+  });},{threshold:.55}).observe(about);
+  window.addEventListener('resize',function(){if(!played)closed();});
+})();
+       </script>
       </div>
      </section>
      <section class="series" id="series">
