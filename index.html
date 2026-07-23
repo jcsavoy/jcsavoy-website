@@ -212,7 +212,7 @@
 .jcb-branch.jcb-left{right:auto;left:-26px;bottom:-24px;width:clamp(90px,12vw,132px);transform:scaleX(-1);opacity:.5}
 @media(max-width:520px){
   .jcb-spread{grid-template-columns:1fr;aspect-ratio:auto} .jcb-l,.jcb-r{box-shadow:none;border-radius:5px}
-  .jcb-gutter{display:none} .jcb-cover{width:100%}
+  .jcb-gutter{display:none} .jcb-cover{display:none} .jcb-l{opacity:1}
   .jcb-leaf p{font-size:1rem} .jcb-portrait{width:38%} .jcb-sig{font-size:1.15rem}
   .jcb-leaf{padding:1.1rem 1.2rem}
 }
@@ -260,6 +260,7 @@
       left=document.querySelector('.jcb-l'),about=document.getElementById('about');
   if(!cover||!('IntersectionObserver' in window)) return;
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  if(window.innerWidth<=520) return;
   var DUR=2900, raf=null;
   function bez(t,p1,p2){var u=1-t;return 3*u*u*t*p1+3*u*t*t*p2+t*t*t;}
   function ease(x){var lo=0,hi=1,t=x;for(var i=0;i<14;i++){t=(lo+hi)/2;
@@ -293,7 +294,7 @@
   var played=false;
   new IntersectionObserver(function(es){es.forEach(function(e){
     if(e.isIntersecting&&!played){played=true;setTimeout(open,220);}
-  });},{threshold:.55}).observe(about);
+  });},{threshold:.35}).observe(book);
   window.addEventListener('resize',function(){if(!played)closed();});
 })();
        </script>
