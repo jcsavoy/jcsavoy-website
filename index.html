@@ -293,7 +293,7 @@
   closed();
   var played=false;
   new IntersectionObserver(function(es){es.forEach(function(e){
-    if(e.isIntersecting&&!played){played=true;setTimeout(open,220);}
+    if(e.isIntersecting&&!played){played=true;setTimeout(open,1220);}
   });},{threshold:.35}).observe(book);
   window.addEventListener('resize',function(){if(!played)closed();});
 })();
